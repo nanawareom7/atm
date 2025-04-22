@@ -15,7 +15,7 @@ class ATM:
         new_balance = self.get_balance() + amount
         self.cursor.execute("UPDATE users SET balance=? WHERE account_number=?", (new_balance, self.account_number))
 
-        # ✅ Insert transaction record
+        # Insert transaction record
         self.cursor.execute("INSERT INTO transactions (account_number, type, amount, balance_after) VALUES (?, 'Deposit', ?, ?)",
                             (self.account_number, amount, new_balance))
 
@@ -30,7 +30,7 @@ class ATM:
         new_balance = balance - amount
         self.cursor.execute("UPDATE users SET balance=? WHERE account_number=?", (new_balance, self.account_number))
 
-        # ✅ Insert transaction record
+        #  Insert transaction record
         self.cursor.execute("INSERT INTO transactions (account_number, type, amount, balance_after) VALUES (?, 'Withdraw', ?, ?)",
                             (self.account_number, amount, new_balance))
 
@@ -56,7 +56,7 @@ class ATM:
         new_recipient_balance = recipient[0] + amount
         self.cursor.execute("UPDATE users SET balance=? WHERE account_number=?", (new_recipient_balance, recipient_account))
 
-        # ✅ Insert transaction records
+        #  Insert transaction records
         self.cursor.execute("INSERT INTO transactions (account_number, type, amount, balance_after) VALUES (?, 'Transfer Sent', ?, ?)",
                             (self.account_number, amount, new_sender_balance))
         self.cursor.execute("INSERT INTO transactions (account_number, type, amount, balance_after) VALUES (?, 'Transfer Received', ?, ?)",
