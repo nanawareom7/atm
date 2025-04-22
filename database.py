@@ -4,7 +4,7 @@ def init_db():
     conn = sqlite3.connect("atm.db")
     cursor = conn.cursor()
 
-    # ✅ Users Table (Holds account details)
+    #  Users Table (Holds account details)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
             account_number TEXT PRIMARY KEY,
@@ -16,7 +16,7 @@ def init_db():
         )
     """)
 
-    # ✅ Transactions Table (Stores transaction history)
+    #  Transactions Table (Stores transaction history)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS transactions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
